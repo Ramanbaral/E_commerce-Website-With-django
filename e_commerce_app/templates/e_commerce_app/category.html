@@ -1,0 +1,40 @@
+{%extends 'e_commerce_app/base.html'%}
+
+{%block title%} {{category}}-category {%endblock%}
+
+{%load static%}
+
+{%block body%}
+
+                  <!-- catnav  -->
+        <div class="catnav mb-4">
+           <div id="category">
+                    <div class="item"> <a href="{%url 'category' 'Tech'%}">Tech</a> </span> </div>
+                    <div class="item">  <a href="{%url 'category' 'Electronics'%}">Electronics </a> </div>
+                    <div class="item"> <a href="{%url 'category' 'Clothing'%}">Clothing </a> </div>
+                    <div class="item"> <a href="{%url 'category' 'Cooking'%}">Cooking</a> </div>
+                    <div class="item"><a href="{%url 'category' 'Drinks'%}"> Drinks</a></div>
+            </div>
+        </div>
+                              <!-- catnav  -->
+
+<h1 style="text-align: center;">{{category}}</h1>
+
+<div class="container ">
+    <div class="row">
+    {%for product in products%}
+    <div class="col-lg-4 mt-3">
+      <img class="thumbnail mb-1" src="{{product.image.url}}" alt="image" >
+      <div class="product-box pb-2 mb-1">
+          <h6><strong>{{product.name}}</strong></h6>
+          <hr>
+          <a class="btn btn-outline-secondary btn_add ml-1" href="{%url 'addtocart' product.id%}">Add to cart</a>
+        <a href="{%url 'product-view' product.id%}" class="btn btn-outline-primary ml-2">View</a>
+        <h4 style= "float: right;" class="mr-2">${{product.price}}</h4>
+      </div>
+    </div>
+    {%endfor%}
+    </div>
+    </div>
+
+{%endblock body%}

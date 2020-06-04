@@ -1,0 +1,188 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'bootstrap.css'%}">
+    <script src="{%static 'bootstrap.js' %}"></script>
+    <style>
+      html{
+        scroll-behavior: smooth;
+      }
+        .hoveff:hover{
+            color: rgba(73, 69, 69, 0.835);
+        }
+        #inf{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: -38px 4px;
+    }
+    .info{
+      display: flex;
+      justify-content:space-around;
+      align-items: center;
+    }
+    
+    .product-box{
+        background-color: #fff;
+        border-radius: 4px;
+        
+    }
+    .product-box:hover{
+      box-shadow: -3px -3px 7px rgb(243, 241, 241) ,3px 3px 8px rgba(15, 15, 15, 0.904);
+    }
+    .box{
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: -3px -3px 7px rgb(243, 241, 241) ,3px 3px 8px rgba(15, 15, 15, 0.904);
+
+    }
+    .product-box img{
+        width: 223px;
+        height:193px;
+        border-radius: 8px;
+        align-items: center;
+    }
+    .pro-title{
+        font-family: auto;
+        font-size: 22px;
+        font-style: italic;
+        margin: 2px 7px;
+    }
+    .pro-desc{
+        font-size: 15px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .pro-price{
+      margin: 5px 2px;
+        font-weight: bold;
+        font-size: 35px;
+        font-family: 'Times New Roman', Times, serif;
+        
+    }
+    .inf{
+      margin-bottom:-9px ;
+    }
+    .thumbnail{
+      align-items: center;
+      margin: 0px 62px;
+      border-radius: 6px;
+      max-width:225px;
+      max-height:225px;
+    }
+    .flex{
+      display: flex;
+    }
+    .table{
+      display:flex;
+      justify-content: space-between;
+    }
+    .smallimg{
+      max-width: 75px;
+    }
+    .verysmallimg{
+      max-width: 40px;
+    }
+    .bigimage{
+      max-width:500px;
+      display: flex;
+      align-items: center;
+    }
+    .tag{
+      margin-top: 5px;
+      padding: 3px 5px;
+      border-radius: 5px;
+      background-color: rgba(255, 30, 0, 0.897);
+      color: white;
+    }
+    #searchbox{
+      display:flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    #search{
+    padding: 3px 5px;
+    font-size: 20px;
+    margin-right: 15px;
+    border-radius: 6px;
+    height: 47px;
+    width: 700px;
+    border: 2px solid rgba(179, 216, 119, 0.746);
+    }
+
+    #category{
+            display: flex;
+            align-items: center;
+        }
+        .item{
+            width:20%;
+            background-color: rgba(82, 79, 79, 0.89);
+            cursor: pointer;
+            height: 30px;
+        }
+        .item a{
+            text-align: center;
+            color: rgb(255, 255, 255);
+            display: block;
+            padding-top:1px;
+            padding-bottom: 1px;
+            margin: auto;
+            font-size: 20px;
+            font-weight: bold;
+            font-family: 'Times New Roman', Times, serif;
+            text-decoration: none;
+            color: rgb(255, 255, 255);
+        }
+        .item :hover{
+            color: black;
+            background-color:whitesmoke;
+            box-shadow:-6px -6px 7px  rgba(238, 236, 236, 0.89), 4px 4px 4px   rgba(12, 12, 12, 0.904);
+            font-size: 23px;
+        }
+        .verysmallimg{
+          width:25px;
+        }
+        .invisiblebtn{
+          background: none;
+          border: none;
+        }
+
+    </style>
+    <title>{%block title%} {%endblock%}</title>
+</head>
+<body>
+                    <!-- navbar starts here -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <a class="navbar-brand hoveff" href="{%url 'shop-home'%}">SHOP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link hoveff" href="{%url 'shop-home'%}">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link hoveff" href="#">Products</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link hoveff" href="#">Contact</a>
+            </li>
+            <li class="nav-item active" id='cart'>
+              <a class="nav-link hoveff" href="{%url 'shop-cart'%}">Cart</a>
+          </li>
+
+          </ul>
+        </div>
+      </nav>
+                            <!-- navbar ends here -->
+    
+    {%block body%}
+    {%endblock%}
+</body>
+</html>

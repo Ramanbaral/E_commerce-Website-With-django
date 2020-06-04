@@ -1,0 +1,52 @@
+{%extends 'e_commerce_app/base.html'%}
+
+{%block title%} Cart-Shop {%endblock%}
+
+{%load static%}
+
+{%block body%}
+
+<div class="flex container ">
+<div class="col-lg-6 box mr-3">
+<form action="#" class="mt-2  mb-4">
+    <input type="text" name="name" placeholder="Name" class="mr-5">
+    <input type="email" name="email" placeholder="Email" class="ml-2">
+</form>
+<hr>
+<h5>Shipping Information:</h5>
+<hr>
+<form action="#">
+
+    <input type="text" name="address" placeholder="Address" class="mb-3 mr-5">
+    <input type="text" name="stste" placeholder="State" class="ml-2">
+    <input type="text" name="city" placeholder="City" class="mr-5 mb-2">
+    <input type="text" name="zip_code" placeholder="Zip code" class="mb-2 ml-2"> <br>
+<hr>
+    <button type="submit" class="btn btn-success mb-2 container-fluid" style="display: block; margin: auto;">Continue</button>
+</form>
+</div>
+
+<div class="col-lg-6 box ml-3">
+    <a href="{%url 'shop-cart'%}" class="btn btn-outline-dark mt-2 " >Back to cart</a>
+    <hr>
+    <h3>Order Summary</h3>
+
+    <table class="table">
+        {%for order in orders%}
+        <tr>
+           <td> <img src="{{order.product.image.url}}" alt="image" class="verysmallimg"></td>
+           <td>{{order.product.name}}</td>
+           <td>${{order.product.price}}</td>
+           <td>{{order.quantity}}</td>
+           <td>${{order.total}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+    {{message}} <br>
+    <span><strong>Items:</strong> {{total_items_cart}}</span> <br>
+    <span><strong> Total:</strong> ${{total_amount_cart}} </span> 
+
+</div>
+</div>
+
+{%endblock body%}

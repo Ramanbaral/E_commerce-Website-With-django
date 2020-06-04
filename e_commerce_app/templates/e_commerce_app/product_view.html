@@ -1,0 +1,71 @@
+{%extends 'e_commerce_app/base.html'%}
+
+{%block title%} Product-view {%endblock%}
+
+{%load static%}
+
+{%block body%}
+
+                  <!-- catnav  -->
+                <div class="catnav mb-4">
+                    <div id="category">
+                             <div class="item"> <a href="{%url 'category' 'Tech'%}">Tech</a> </span> </div>
+                             <div class="item">  <a href="{%url 'category' 'Electronics'%}">Electronics </a> </div>
+                             <div class="item"> <a href="{%url 'category' 'Clothing'%}">Clothing </a> </div>
+                             <div class="item"> <a href="{%url 'category' 'Cooking'%}">Cooking</a> </div>
+                             <div class="item"><a href="{%url 'category' 'Drinks'%}"> Drinks</a></div>
+                     </div>
+                </div>
+                                       <!-- catnav  -->
+
+                                    
+
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="mr-3">
+            <img src="{{product.image.url}}" alt="image" class="bigimage">
+        </div>
+
+        <div class="col-lg-5 box ml-3 pt-2">
+            <span class="tag">{{product.category}}</span>
+            <h2>{{product.name}}</h3>
+
+            <h4 class="mt-2">Price: ${{product.price}}</h4>
+
+            <small>Avaliability : <span style="color: lightgreen;"> In stock</span></small>
+            <p class="mt-3">Condition: New</p>
+            <p>Brand: XYZ Company</p>
+            <a class="btn btn-outline-secondary btn_add ml-1 mt-1 mb-3" href="{%url 'addtocart' product.id%}">Add to cart</a>
+        </div>
+    </div>
+
+    <div class="description mt-4">
+        <h2>Product Description:</h2>
+        <p class="mb-4">{{product.desc}}</p>
+    </div>
+
+</div>
+
+<div class="similar_items mt-1 mb-4">
+    <div class="container ">
+        <h2 class="mb-3">Similar Products:</h2>
+        <div class="row">
+        {%for pro in products%}
+        <div class="col-lg-4">
+          <img class="thumbnail mb-1" src="{{pro.image.url}}" alt="image" >
+          <div class="product-box pb-2 mb-3">
+              <h6><strong>{{pro.name}}</strong></h6>
+              <hr>
+            <a class="btn btn-outline-secondary btn_add ml-1" href="{%url 'addtocart' product.id%}">Add to cart</a>
+            <a href="{%url 'product-view' pro.id%}" class="btn btn-outline-primary ml-2">View</a>
+            <h4 style= "float: right;" class="mr-2">${{pro.price}}</h4>
+          </div>
+        </div>
+        {%endfor%}
+        </div>
+        </div>
+
+</div>
+
+{%endblock body%}

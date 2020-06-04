@@ -1,0 +1,67 @@
+{%extends 'e_commerce_app/base.html'%}
+
+{%block title%} Cart-Shop {%endblock%}
+
+{%load static%}
+
+{%block body%}
+
+<div class="container">
+<div class="col-lg-12">
+    <div class="box">
+        <a class="btn btn-outline-dark mt-1 ml-1" href="{%url 'shop-home'%}">Continue shopping</a>
+        <br>
+        <hr>
+        <div class="info pb-3">
+            <h5>Items: {{total_items_cart}}</h5>
+            <h5>Total: ${{total_amount_cart}}</h5>
+            <a href="{%url 'shop-checkout'%}" class="btn btn-success mr-2 mb-1">Checkout</a>
+        </div>
+    </div>
+
+    <div class="box mt-3 col-lg-8">
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>Items</th>
+                <th class="ml-5">price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+            <hr>
+            {%for order in orders%}
+            <tr>
+               <td> <img src="{{order.product.image.url}}" alt="image" class="smallimg"></td>
+               <td>{{order.product.name}}</td>
+               <td>${{order.product.price}}</td>
+               <td class="quan">{{order.quantity}} 
+                   <button onclick="add()" class="invisiblebtn"><img src="{%static 'pro_req_img/up.png'%}" class="verysmallimg"></button>
+                   <button class="invisiblebtn"></button><img src="{%static 'pro_req_img/down.png'%}" class="verysmallimg" style="margin-left: 11px;"></button>
+               </td>
+               <td>${{order.total}}</td>
+               <td><a href="{%url 'delete-cart-item' order.id%}" class="btn btn-outline-danger">Remove</a></td>
+            </tr>
+            {%endfor%}
+        </table>
+        {{message }}
+
+
+    </div>
+</div>
+</div>
+
+<script>
+    function add(){
+        let q=document.querySelectorAll('.quan')
+        console.log(q.innerHTML)
+        q.innerHTMl++
+
+        
+    }
+</script>
+{%endblock body%}
+
+
+
+
+ 

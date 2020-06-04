@@ -1,0 +1,36 @@
+{%extends 'e_commerce_app/base.html'%}
+
+{%block title%} Home-Shop {%endblock%}
+
+{%load static%}
+
+{%block body%}
+<h1 style="text-align: center;">Search Results:</h1>
+<hr>
+
+<div id="searchbox">
+    <form action="/shop/search/" method="GET">
+      <input type="text" name="search" id="search" placeholder="Search"> 
+      <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+<div class="container ">
+    <div class="row">
+    {%for product in products%}
+    <div class="col-lg-4">
+      <img class="thumbnail mb-1" src="{{product.image.url}}" alt="image" >
+      <div class="product-box pb-2 mb-3">
+          <h6><strong>{{product.name}}</strong></h6>
+          <hr>
+          <a class="btn btn-outline-secondary btn_add ml-1" href="{%url 'addtocart' product.id%}">Add to cart</a>
+        <a href="{%url 'product-view' product.id%}" class="btn btn-outline-primary ml-2">View</a>
+        <h4 style= "float: right;" class="mr-2">${{product.price}}</h4>
+      </div>
+    </div>
+    {%endfor%}
+    </div>
+    </div>
+
+
+{%endblock body%}
