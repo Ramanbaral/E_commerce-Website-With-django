@@ -25,7 +25,8 @@
           <hr>
           <a class="btn btn-outline-secondary btn_add ml-1" href="{%url 'addtocart' product.id%}">Add to cart</a>
         <a href="{%url 'product-view' product.id%}" class="btn btn-outline-primary ml-2">View</a>
-        <h4 style= "float: right;" class="mr-2">${{product.price}}</h4>
+        <h5 style= "float: right;" class="mr-2">${{product.price}}</h5>
+        <small style= "float: right;text-decoration: line-through;color: rgba(218, 72, 72, 0.87);" class="mr-2">${{product.price_before}}</small>
       </div>
     </div>
     {%endfor%}
